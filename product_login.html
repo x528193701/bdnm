@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="css/product_login.css"/>
+</head>
+<body>
+<div class="container-fluid p-0">
+    <div class="head_size mt-3 d-flex justify-content-between align-items-center border-bottom pb-1">
+        <a href="#" class="d-block d-flex justify-content-between align-items-center ">
+            <img src="img/baidu_img/login/logo-nuomi.png" alt=""/>
+            <span class="d-inline-block ml-2 pt-2 ">|&nbsp;注册百度账号</span>
+        </a>
+        <div>
+            <span>我已注册，现在就</span>
+            <button class="text-dark" data-toggle="modal" data-target="#login">登录</button>
+            <div class="modal" id="login">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span>登录百度账号</span>
+                            <span class="close font-weight-normal" data-dismiss="modal">x</span>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <div>
+                                <p class="pb-2 text-center">请使用<span class="text-primary">百度App</span>扫码登录</p>
+                                <div class="">
+                                    <img class="w-100" src="img/baidu_img/login/upreg.png" alt=""/>
+                                </div>
+                                <p class="modal_body_2">百度技术加密，保障您的隐私安全</p>
+                            </div>
+                            <div class="pr-4 pt-2 pb-5">
+                                <form action="">
+                                    <p class="text-right"><a class=" text-dark" href="#">短信快捷登录</a></p>
+                                    <p><input class="w-100 pl-5" type="text" placeholder="手机/邮箱/用户名"/></p>
+                                    <p><input class="w-100 pl-5" type="text" placeholder="密码"/></p>
+                                    <div class="d-flex justify-content-between mt-1">
+                                        <div>
+                                            <input id="check_1" type="checkbox"/>
+                                            <label for="check_1">下次自动登录</label>
+                                        </div>
+                                        <a href="#">登录遇到问题</a>
+                                    </div>
+                                    <input type="submit" class="btn w-100 text-white mt-1 mb-1" value="登录"/>
+                                    <p class="text-right mt-2"><a href="#">立即注册</a></p>
+                                </form>
+                                <div class="border-top mt-4">
+                                    <div>可以使用以下方式登录</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 d-flex">
+        <form action="/user/reg" method="get" class="form_size">
+            <div class="mb-3 d-flex">
+                <label>用户名</label>
+                <input id="d1" name="uname" onfocus="get_n()" onblur="get_n1()" type="text" placeholder="请设置用户名"/>
+                <div class="d-flex flex-column justify-content-center">
+                    <span id="d2"></span>
+                    <span id="d3"></span>
+                </div>
+            </div>
+            <script>
+                function get_n(){
+                    d2.innerHTML="设置后不可更改"
+                    d3.innerHTML="中英文均可,最长7个汉字或14个字符"
+                }
+                function get_n1(){
+                    d2.innerHTML=""
+                    d3.innerHTML=""
+                    var reg=/^\w{3}$|^[\u4e00-\u9fa5]{7}$/i;
+                    var d1_obj=d1.value;
+                    var bool=reg.test(d1_obj)
+                    if(!bool){
+                        d2.innerHTML="用户名仅支持中英文、数字和下划线,"
+                        d3.innerHTML="且不能为纯数字"
+                    }else{
+                        var num=parseInt(d1_obj);
+                        num+="";
+                        if (num.length==3){
+                            d2.innerHTML="用户名仅支持中英文、数字和下划线,";
+                            d3.innerHTML="且不能为纯数字";
+                        }else{
+                            d2.innerHTML="通过"
+                        }
+                    }
+                }
+
+            </script>
+            <div class="mt-1 mb-3 d-flex position-relative">
+                <label>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                <input id="upwd_1" name="upwd" onfocus="get_d()" onblur="get_d1()" data-toggle="collapse" data-target="#up"  type="password" placeholder="请设置登录密码"/>
+                <div class="collapse m-0 position-absolute w-25"  id="up">
+                    <div id="upwd_2"></div>
+                    <div id="upwd_3"></div>
+                    <div id="upwd_4"></div>
+                </div>
+                <script>
+                    function get_d(){
+                        upwd_2.innerHTML="·长度为8~14个字符"
+                        upwd_3.innerHTML="支持数字，大小写子母和标点符号"
+                        upwd_4.innerHTML="·长度为8~14个字符"
+                    }
+                    function get_d1(){
+                        upwd_2.innerHTML=""
+                        upwd_3.innerHTML=""
+                        upwd_4.innerHTML=""
+                    }
+                </script>
+            </div>
+            <div class="mt-1 mb-3">
+                <label>手机号</label>
+                <input type="text" name="phone" onfocus="get_p()" onblur="get_p1()" placeholder="可用于登录和找回密码"/>
+                <span id="phone_2" class="ml-0"></span>
+                <script>
+                    function get_p(){
+                        phone_2.innerHTML="请输入中国大陆手机号，其他用户不可见"
+                    }
+                    function get_p1(){
+                        phone_2.innerHTML=""
+                    }
+                </script>
+            </div>
+            <div class="mt-1 mb-3 text_submit">
+                <label>验证码</label>
+                <input type="text" class="w_input" placeholder="请输入验证码"/>
+                <input type="text" value="获取短信验证码" class="btn"/>
+            </div>
+            <p class="mt-1 mb-3">
+                <input type="checkbox"/>阅读并接受 <a href="#">《百度用户协议》</a>及 <a href="#">《百度隐私权保护声明》</a>
+            </p>
+            <input class="btn text-white" type="submit"/>
+        </form>
+        <!--右-->
+        <div class="right_size">
+            <h3>手机快速注册</h3>
+            <div class="reg-sms-p">
+                <p class="">请使用中国大陆手机号，编辑短信：</p>
+                <p>8-14位字符（支持数字/字母/符号）</p>
+                <p>作为登录密码，发送至：</p>
+                <p>1069 0691 036590</p>
+                <p>即可注册成功，手机号即为登录帐号。</p>
+                <p class="mt-1">快速注册即视为您同意
+                    <a href="https://passport.baidu.com/static/passpc-account/html/protocal.html"
+                       target="_blank">百度用户协议</a>
+                    和
+                    <a href="https://www.baidu.com/duty/yinsiquan.html" target="_blank">百度隐私权保护声明</a>
+                </p>
+                <p class="text-center">
+                    <img class="d-block" src="img/baidu_img/login/upreg.png" alt=""/>
+                    <span>请使用手机百度进行扫码</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed d_fixed"><a href="#">帮助中心</a></div>
+    <div class="copy_box text-center">2019&nbsp;©Baidu</div>
+</div>
+</body>
+</html>

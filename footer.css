@@ -1,0 +1,12 @@
+.my_small{
+    font-size:0.7rem;
+}
+.foot_size>ul{height:6.7rem;font-size: 0.9rem;}
+.foot_size>ul:nth-child(4){height:9.375rem;}
+.foot_size>ul:nth-child(5){height:10.5rem;}
+.foot_size>ul:nth-child(5)>li>a{border:1px solid #BF954D!important;font-size: 0.9rem;color:#BF954D}
+.foot_size>ul{width: 15.125rem;}
+.w_size{ padding:0 3.5rem;}
+.foot_size a{color:#666;}
+.foot_size a:hover{color: #BF954D; text-decoration: none;}
+.container-fluid{background:#f2f2f2}
